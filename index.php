@@ -24,7 +24,7 @@
                 </ul>
             </nav>
         </header>
-        
+
         <!-- QUESTION 1 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
@@ -36,10 +36,77 @@
                 Créer 2 étudiants différents.
             </p>
             <div class="exercice-sandbox">
-    
+                <?php
+
+                class Student
+                {
+                    private string $surname = '';
+                    private string $firstname = '';
+                    private int $schoolYear;
+                    // private int $age;
+                    private DateTime $birthdate;
+                    
+                    public function __construct(string $surname, string $firstname, int $schoolYear, DateTime $birthdate)
+                    {
+                        $this->surname = $surname;
+                        $this->firstname = $firstname;
+                        $this->schoolYear = $schoolYear;
+                        $this->birthdate = $birthdate;
+                        // $this->age = $age;
+                    }
+                    
+                    public function __toString()
+                    {
+                        return $this->birthdate;
+                    }
+                    
+                    public function getName(): string
+                    {
+                        return $this->surname;
+                    }
+
+                    public function setSchoolYear(string $schoolYear)
+                    {
+                        return $this->schoolYear = $schoolYear;
+                    }
+
+                    public function getBirthdate()
+                    {
+                        return $this->birthdate;
+                    }
+                    
+                    public function setBirthdate(DateTime $birthdate)
+                    {
+                        return $this->birthdate = $birthdate;
+                    }
+
+                    public function getAge()
+                    {
+                        // $date = new DateTime($birthdate);
+                        $today = new DateTime;
+                        // $diff = $date diff(new DateTime);
+
+                        // $birthdate = new DateTime($birthdate);
+                        $diff = $this->birthdate->diff($today);
+                        // var_dump($this->birthdate, $today);
+                        return $diff->y;
+                    }
+
+                } ?>
+
+                <?php
+
+                $firstStudent = new Student('Baldor', 'Maya', 1, new DateTime('2003-05-07'));
+
+                $secondStudent = new Student('Baldor', 'Niki', 4, new DateTime('2000-06-01'));
+
+                var_dump($firstStudent, $secondStudent)
+
+                ?>
+
             </div>
         </section>
-        
+
         <!-- QUESTION 2 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
@@ -49,10 +116,17 @@
                 Modifier le niveau scolaire des 2 élèves et les afficher.
             </p>
             <div class="exercice-sandbox">
-    
+
+                <?php
+
+                var_dump($firstStudent->setSchoolYear(2));
+                var_dump($secondStudent->setSchoolYear(5));
+
+                ?>
+
             </div>
         </section>
-        
+
         <!-- QUESTION 3 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
@@ -63,9 +137,16 @@
             </p>
             <div class="exercice-sandbox">
 
+                <?php
+
+                // var_dump($firstStudent->getBirthdate());
+                // var_dump($secondStudent->getBirthdate());
+                echo $firstStudent->getBirthdate();
+                echo $secondStudent->getBirthdate();
+                ?>
             </div>
         </section>
-        
+
         <!-- QUESTION 4 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 4</h2>
@@ -76,10 +157,15 @@
             </p>
             <div class="exercice-sandbox">
 
+                <?php
 
+                echo $firstStudent->getAge() . ' ans <br>';
+                echo $secondStudent->getAge() . ' ans';
+
+                ?>
             </div>
         </section>
-        
+
         <!-- QUESTION 5 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 5</h2>
@@ -92,7 +178,7 @@
 
             </div>
         </section>
-        
+
         <!-- QUESTION 6 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 6</h2>
@@ -110,4 +196,5 @@
     </div>
     <div class="copyright">© Guillaume Belleuvre, 2023 - DWWM</div>
 </body>
+
 </html>
