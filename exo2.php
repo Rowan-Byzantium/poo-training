@@ -24,7 +24,7 @@
                 </ul>
             </nav>
         </header>
-        
+
         <!-- QUESTION 1 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 1</h2>
@@ -36,11 +36,52 @@
                 Créer 2 professeurs différents.
             </p>
             <div class="exercice-sandbox">
-                
+                <?php
+
+                class Teacher
+                {
+                    private string $surname = '';
+                    private string $firstname = '';
+                    private ?string $school;
+                    private array $subjects;
+
+                    public function __construct(string $surname, string $firstname, string $school = null, array $subjects = [])
+                    {
+                        $this->surname = $surname;
+                        $this->firstname = $firstname;
+                        $this->school = $school;
+                        $this->subjects = $subjects;
+                    }
+
+                    public function setSchool(string $school){
+                        return $this->school = $school;
+                    }
+                    public function getSchool(){
+                        return $this->school; 
+                    }
+
+                    public function setSubject(array $subjects){
+                        return $this->subjects = $subjects;
+                    }
+                    public function addSubject(string $subject){
+                        array_push($this->subjects, $subject);
+                    }
+                    public function displayTopics() :string
+                    {
+                        return implode(' ', $this->topics);
+                    }
+                }
+
+                $firstTeacher = new Teacher('Kurogane', 'Reiji');
+                $secondTeacher = new Teacher('Djebarri', 'Zohra');
+
+                var_dump($firstTeacher);
+                var_dump($secondTeacher);
+                ?>
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 2 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 2</h2>
@@ -52,11 +93,18 @@
                 Afficher les écoles des 2 professeurs.
             </p>
             <div class="exercice-sandbox">
+                <?php
                 
+                $firstTeacher->setSchool('Université de Rouen');
+                $secondTeacher->setSchool('Université de Caen');
+                
+                echo $firstTeacher->getSchool() . '</br>';
+                echo $secondTeacher->getSchool();
+                ?>
             </div>
         </section>
-        
-        
+
+
         <!-- QUESTION 3 -->
         <section class="exercice">
             <h2 class="exercice-ttl">Question 3</h2>
@@ -66,7 +114,7 @@
                 Tester l'ajout, la suppression et l'affichage sur chacun des profs.
             </p>
             <div class="exercice-sandbox">
-                
+
             </div>
         </section>
 
@@ -81,11 +129,12 @@
                 Afficher la phrase de présentation des 2 profs.
             </p>
             <div class="exercice-sandbox">
-                
+
             </div>
         </section>
 
     </div>
     <div class="copyright">© Guillaume Belleuvre, 2023 - DWWM</div>
 </body>
+
 </html>

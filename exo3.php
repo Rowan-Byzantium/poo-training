@@ -34,7 +34,22 @@
                 Assurer le fonctionnement du code des exercices précédents.
             </p>
             <div class="exercice-sandbox">
+                <?php
                 
+                spl_autoload_register();
+
+                use App\Objects\Student;
+                use App\Objects\Teacher;
+
+                $lux = new Student('Snyder', 'Felicia', 4, new DateTime('2003-05-07'), 'Iron Academy');
+                $hell = new Teacher('De Montespan', 'Hellébore', 'Cloud Tower');
+                
+                $hell->addSubject('Herboristerie');
+                $hell->addSubject('Biologie');
+                echo $lux;
+                echo $hell;
+
+                ?>
             </div>
         </section>
         

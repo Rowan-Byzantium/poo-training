@@ -34,7 +34,17 @@
                 Créer 2 écoles et afficher leurs proprités.
             </p>
             <div class="exercice-sandbox">
+                <?php
+                    
+                    spl_autoload_register();
 
+                    use App\Objects\School;
+                    
+                    // $school1 = new School('St Michel', 'St Etienne');
+                    // $school2 = new School('Linphea', 'Magix');
+                    // $school3;
+                    var_dump($school1, $school2)
+                ?>
             </div>
         </section>
         
@@ -50,7 +60,9 @@
                 Créer une école de chaque type.
             </p>
             <div class="exercice-sandbox">
+                <?php
                 
+                ?>
             </div>
         </section>
 
@@ -83,4 +95,4 @@
     </div>
     <div class="copyright">© Guillaume Belleuvre, 2023 - DWWM</div>
 </body>
-</html>
+</html> =

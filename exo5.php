@@ -43,7 +43,7 @@
                 Créer une classe permettant de gérer l'affichage des pages de ce mini-site.
             </p>
             <div class="exercice-sandbox">
-    
+                
             </div>
         </section>
         

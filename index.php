@@ -45,29 +45,30 @@
                     private int $schoolYear;
                     // private int $age;
                     private DateTime $birthdate;
+                    private string $school = '';
                     
-                    public function __construct(string $surname, string $firstname, int $schoolYear, DateTime $birthdate)
+                    public function __construct(string $surname, string $firstname, int $schoolYear, DateTime $birthdate, string $school)
                     {
                         $this->surname = $surname;
                         $this->firstname = $firstname;
                         $this->schoolYear = $schoolYear;
                         $this->birthdate = $birthdate;
                         // $this->age = $age;
-                    }
-                    
-                    public function __toString()
-                    {
-                        return $this->birthdate;
+                        $this->school = $school;
                     }
                     
                     public function getName(): string
                     {
-                        return $this->surname;
+                        $fullName = $this->firstname . ' ' . $this->surname;
+                        return $fullName;
                     }
 
                     public function setSchoolYear(string $schoolYear)
                     {
                         return $this->schoolYear = $schoolYear;
+                    }
+                    public function getSchoolYear(){
+                        return $this->schoolYear;
                     }
 
                     public function getBirthdate()
@@ -92,13 +93,29 @@
                         return $diff->y;
                     }
 
+                    public function getSchool() :string
+                    {
+                        return $this->school;
+                    }
+
+                    // public function presentStudent() :string
+                    // {
+                    //     return  'Bonjour, je m\'appelle ' . $this->getName() . ', j\'ai ' . $this->getAge() . ' ans et je vais à l\'' . $this->getSchool() . ' en classe de ' . $this->getSchoolYear() . ' année.';
+                    // }
+
+                    public function __toString() :string
+                    {
+                        return  'Bonjour, je m\'appelle ' . $this->getName() . ', j\'ai ' . $this->getAge() . ' ans et je vais à l\'' . $this->getSchool() . ' en classe de ' . $this->getSchoolYear() . ' année.';
+                        
+                    }
+                
                 } ?>
 
                 <?php
 
-                $firstStudent = new Student('Baldor', 'Maya', 1, new DateTime('2003-05-07'));
+                $firstStudent = new Student('Baldor', 'Maya', 1, new DateTime('2003-05-07'), 'Université de Caen');
 
-                $secondStudent = new Student('Baldor', 'Niki', 4, new DateTime('2000-06-01'));
+                $secondStudent = new Student('Baldor', 'Niki', 4, new DateTime('2000-06-01'), 'Université de Rouen');
 
                 var_dump($firstStudent, $secondStudent)
 
@@ -139,10 +156,10 @@
 
                 <?php
 
-                // var_dump($firstStudent->getBirthdate());
-                // var_dump($secondStudent->getBirthdate());
-                echo $firstStudent->getBirthdate();
-                echo $secondStudent->getBirthdate();
+                var_dump($firstStudent->getBirthdate());
+                var_dump($secondStudent->getBirthdate());
+                // echo $firstStudent->getBirthdate();
+                // echo $secondStudent->getBirthdate();
                 ?>
             </div>
         </section>
@@ -175,7 +192,8 @@
                 Ajouter la propriété et ajouter la donnée sur les élèves.
             </p>
             <div class="exercice-sandbox">
-
+                <?=$firstStudent->getSchool() . '<br>'?>
+                <?=$secondStudent->getSchool()?>
             </div>
         </section>
 
@@ -189,7 +207,12 @@
                 Afficher la phrase de présentation des 2 élèves.
             </p>
             <div class="exercice-sandbox">
+                <!--$firstStudent->presentStudent()?>-->
 
+                <?=$firstStudent?>
+                <?=$secondStudent?>
+                <!-- 'Bonjour, je m\'appelle ' . $firstStudent->getName() . ', j\'ai ' . $firstStudent->getAge() . ' ans et je vais à l\'' . $firstStudent->getSchool() . ' en classe de ' . $firstStudent->getSchoolYear() . ' année.'?>
+                'Bonjour, je m\'appelle ' . $secondStudent->getName() . ', j\'ai ' . $secondStudent->getAge() . ' ans et je vais à l\'' . $secondStudent->getSchool() . ' en classe de ' . $secondStudent->getSchoolYear() . ' année.'?> -->
             </div>
         </section>
 
