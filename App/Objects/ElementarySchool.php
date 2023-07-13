@@ -4,11 +4,7 @@ namespace App\Objects;
 
 class ElementarySchool extends School
 {
-    public function __construct(string $schoolName, string $city, array $grades = ['CP', 'CE1', 'CE2', 'CM1', 'CM2']){
-       
-        parent::__construct($schoolName, $city);
-        $this->grades = $grades;
-    }
+    protected static $grades = ['CP', 'CE1', 'CE2', 'CM1', 'CM2'];
    
     // *************************
     // School type
